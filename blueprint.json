@@ -15,12 +15,69 @@
         "level": "alpha",
         "patch": 0
       }
-    }
+    },
+    "timestamp": "2020-03-31T16:07:44+11:00"
   },
   "software": {
     "base": {
+      "name": "gui",
+      "framework": "sinatra",
       "deployment_type": "web",
-      "http_protocol": "https_and_http"
-    }
+      "http_protocol": "https_only",
+      "framework_port_override": 0
+    },
+    "installed_packages": [
+      {
+        "name": "gui_v1",
+        "download_type": "git",
+        "source_url": "https://github.com/engines/gui_v1"
+      }
+    ],
+    "environment_variables": [
+      {
+        "name": "MODE",
+        "mandatory": true,
+        "immutable": true,
+        "ask_at_build_time": true,
+        "input": {
+          "type": "select",
+          "label": "Run as",
+          "title": "Control of stduo",
+          "collection": {
+            "include_blank": true,
+            "items": {
+              "system": "Control",
+              "studio": "Studio"
+            }
+          }
+        }
+      },
+      {
+        "name": "SESSION_SECRET",
+        "value": "_Engines_System(random(64))",
+        "mandatory": true,
+        "immutable": true,
+        "input": {
+          "type": "hidden"
+        }
+      },
+      {
+        "name": "ENGINES_SYSTEM_IP",
+        "value": "Engines_System(control_ip)",
+        "mandatory": true,
+        "immutable": true,
+        "input": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "SESSION_TIMEOUT_MINUTES",
+        "value": "15",
+        "mandatory": true,
+        "input": {
+          "type": "integer"
+        }
+      }
+    ]
   }
 }
