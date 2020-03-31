@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-03-31T19:01:43+11:00"
+    "timestamp": "2020-03-31T20:24:07+11:00"
   },
   "software": {
     "base": {
@@ -29,7 +29,7 @@
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#!/bin/sh\r\n\r\nPID_FILE=/home/engines/run/engines.pid\t\r\n\r\nexport PID_FILE\r\ngit pull\r\nbundle --standalone\r\nbundle exec thin --threaded  -R /home/app/config.ru  start &\r\necho $! > $PID_FILE\r\n\r\n"
+        "content": "#!/bin/sh\r\n\r\nPID_FILE=/home/engines/run/engines.pid\t\r\n\r\nexport PID_FILE\r\ngit pull\r\nbundle --standalone\r\nnpm i\r\nbundle exec thin --threaded  -R /home/app/config.ru  start &\r\necho $! > $PID_FILE\r\n\r\n"
       }
     },
     "installed_packages": [
