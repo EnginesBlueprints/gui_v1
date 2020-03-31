@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-03-31T17:11:08+11:00"
+    "timestamp": "2020-03-31T17:18:19+11:00"
   },
   "software": {
     "base": {
@@ -25,6 +25,12 @@
       "deployment_type": "web",
       "http_protocol": "https_only",
       "framework_port_override": 0
+    },
+    "scripts": {
+      "start": {
+        "language": "sh",
+        "content": "#!/bin/sh\r\n\r\ngit pull\r\nbundle --standalone"
+      }
     },
     "installed_packages": [
       {
@@ -99,6 +105,12 @@
         "input": {
           "type": "checkbox"
         }
+      }
+    ],
+    "file_write_permissions": [
+      {
+        "path": "/home/app",
+        "recursive": true
       }
     ]
   }
