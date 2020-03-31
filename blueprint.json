@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-03-31T16:22:22+11:00"
+    "timestamp": "2020-03-31T16:26:28+11:00"
   },
   "software": {
     "base": {
@@ -31,7 +31,7 @@
         "name": "gui_v1",
         "download_type": "git",
         "source_url": "https://github.com/engines/gui_v1",
-        "path_to_extracted": "./"
+        "extraction_command": "./"
       }
     ],
     "environment_variables": [
