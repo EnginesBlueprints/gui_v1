@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-03-31T16:07:44+11:00"
+    "timestamp": "2020-03-31T16:10:59+11:00"
   },
   "software": {
     "base": {
@@ -76,6 +76,25 @@
         "mandatory": true,
         "input": {
           "type": "integer"
+        }
+      },
+      {
+        "name": "ENABLE_SIDE_LOAD",
+        "mandatory": true,
+        "input": {
+          "type": "checkbox_boolean"
+        }
+      },
+      {
+        "name": "APPLICATION_LIBRARY_URL",
+        "input": {
+          "type": "url"
+        }
+      },
+      {
+        "name": "ENABLE_SERVICES_DESIGNER",
+        "input": {
+          "type": "checkbox"
         }
       }
     ]
