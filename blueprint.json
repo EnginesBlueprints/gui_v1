@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-03-31T18:18:39+11:00"
+    "timestamp": "2020-03-31T19:01:43+11:00"
   },
   "software": {
     "base": {
@@ -72,7 +72,7 @@
       },
       {
         "name": "ENGINES_SYSTEM_IP",
-        "value": "Engines_System(control_ip)",
+        "value": "_Engines_System(control_ip)",
         "mandatory": true,
         "immutable": true,
         "input": {
@@ -89,7 +89,7 @@
       },
       {
         "name": "ENABLE_SIDE_LOAD",
-        "mandatory": true,
+        "immutable": true,
         "input": {
           "type": "checkbox_boolean"
         }
