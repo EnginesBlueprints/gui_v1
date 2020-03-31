@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-03-31T17:27:28+11:00"
+    "timestamp": "2020-03-31T18:16:21+11:00"
   },
   "software": {
     "base": {
@@ -24,12 +24,12 @@
       "framework": "sinatra",
       "deployment_type": "web",
       "http_protocol": "https_only",
-      "framework_port_override": 0
+      "framework_port_override": 3000
     },
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#!/bin/sh\r\n\r\ngit pull\r\nbundle --standalone\r\nbundle exec thin --threaded -C /home/config.yaml  -R /home/config.ru  start &"
+        "content": "#!/bin/sh\r\n\r\ngit pull\r\nbundle --standalone\r\nbundle exec thin --threaded  -R /home/app/config.ru  start &"
       }
     },
     "installed_packages": [
