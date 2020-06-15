@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-06-15T16:54:04+10:00"
+    "timestamp": "2020-06-15T18:01:25+10:00"
   },
   "software": {
     "base": {
@@ -24,7 +24,11 @@
       "framework": "sinatra",
       "deployment_type": "web",
       "http_protocol": "https_only",
-      "framework_port_override": 3000
+      "framework_port_override": 3000,
+      "memory": {
+        "required": 96,
+        "recommended": 128
+      }
     },
     "scripts": {
       "start": {
