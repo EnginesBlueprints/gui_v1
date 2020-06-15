@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-03-31T20:24:07+11:00"
+    "timestamp": "2020-06-15T16:54:04+10:00"
   },
   "software": {
     "base": {
@@ -72,7 +72,7 @@
       },
       {
         "name": "ENGINES_SYSTEM_IP",
-        "value": "_Engines_System(control_ip)",
+        "value": "_Engines_System(docker_ip)",
         "mandatory": true,
         "immutable": true,
         "input": {
@@ -96,6 +96,7 @@
       },
       {
         "name": "APPLICATION_LIBRARY_URL",
+        "value": "https://library.engines.org/api/v0/apps",
         "input": {
           "type": "url"
         }
