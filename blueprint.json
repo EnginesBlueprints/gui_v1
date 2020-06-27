@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-06-15T18:01:25+10:00"
+    "timestamp": "2020-06-27T16:07:11+10:00"
   },
   "software": {
     "base": {
@@ -114,8 +114,14 @@
     ],
     "file_write_permissions": [
       {
-        "path": "/home/app",
+        "path": "/home/app/",
         "recursive": true
+      },
+      {
+        "path": "log/production.log"
+      },
+      {
+        "path": "/bundle/bundler/setup.rb"
       }
     ]
   }
