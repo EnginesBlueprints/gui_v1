@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-08-17T21:37:12+10:00"
+    "timestamp": "2020-08-18T09:39:05+10:00"
   },
   "software": {
     "base": {
@@ -40,6 +40,11 @@
         "content": "#!/bin/sh\r\nif ! test -d /home/app/cert\r\n then\r\n  mkdir -p /home/app/cert\r\n  cat /home/engines/etc/ssl/certs/control.crt /home/engines/etc/ssl/keys/control.key > /home/app/cert/control_key.crt\r\n  chmod og-rwx -R /home/app/cert\r\nfi"
       }
     },
+    "system_packages": [
+      {
+        "package": "haproxy"
+      }
+    ],
     "installed_packages": [
       {
         "name": "gui_v1",
