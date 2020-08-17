@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-08-17T21:22:48+10:00"
+    "timestamp": "2020-08-17T21:36:25+10:00"
   },
   "software": {
     "base": {
@@ -33,7 +33,7 @@
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#!/bin/sh\r\n\r\nPID_FILE=/home/engines/run/engines.pid\t\r\n\r\nexport PID_FILE\r\ngit pull\r\nbundle --standalone\r\nnpm i\r\n#bundle exec thin --threaded  -R /home/app/config.ru  start &\r\nrainbows -c rainbows.rb -p 8080 -o 127.0.0.1 &\r\necho $! > $PID_FILE\r\n\r\nhaproxy -f /usr/local/etc/haproxy.cfg & \r\necho  \" $! \" >> $PID_FILE\r\n\r\n\r\n"
+        "content": "#!/bin/sh\r\n\r\nPID_FILE=/home/engines/run/engines.pid\t\r\n\r\nexport PID_FILE\r\ngit pull\r\nbundle --standalone\r\nnpm i\r\n#bundle exec thin --threaded  -R /home/app/config.ru  start &\r\nbundle exec rainbows -c rainbows.rb -p 8080 -o 127.0.0.1 &\r\necho $! > $PID_FILE\r\n\r\nhaproxy -f /usr/local/etc/haproxy.cfg & \r\necho  \" $! \" >> $PID_FILE\r\n\r\n\r\n"
       },
       "first_run": {
         "language": "sh",
