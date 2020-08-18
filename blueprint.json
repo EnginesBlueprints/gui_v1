@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-08-18T10:02:43+10:00"
+    "timestamp": "2020-08-18T10:08:28+10:00"
   },
   "software": {
     "base": {
@@ -36,8 +36,7 @@
         "content": "#!/bin/sh\r\n\r\nPID_FILE=/home/engines/run/engines.pid\t\r\n\r\nexport PID_FILE\r\ngit pull\r\nbundle --standalone\r\nnpm i\r\n#bundle exec thin --threaded  -R /home/app/config.ru  start &\r\nbundle exec rainbows -c rainbows.rb -p 8080 -o 127.0.0.1 &\r\necho $! > $PID_FILE\r\n\r\nhaproxy -f /usr/local/etc/haproxy.cfg & \r\necho  \" $! \" >> $PID_FILE\r\n\r\nsleep 400\r\n\r\n"
       },
       "first_run": {
-        "language": "sh",
-        "content": "#!/bin/sh\r\nif ! test -d /home/app/cert\r\n then\r\n  mkdir -p /home/app/cert\r\n  cat /home/engines/etc/ssl/certs/control.crt /home/engines/etc/ssl/keys/control.key > /home/app/cert/control_key.crt\r\n  chmod og-rwx -R /home/app/cert\r\nfi"
+        "language": "sh"
       }
     },
     "system_packages": [
@@ -124,10 +123,10 @@
     "template_files": [
       {
         "path": "/usr/local/etc/haproxy.cfg",
-        "content": "global\r\n       log syslog.engines.internal:514 local0\r\n        stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners\r\n        stats timeout 30s\r\n\r\n        # Default SSL material locations\r\n        ca-base /etc/ssl/certs\r\n        crt-base /etc/ssl/private\r\n\r\n        # Default ciphers to use on SSL-enabled listening sockets.\r\n        # For more information, see ciphers(1SSL). This list is from:\r\n        #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/\r\n        # An alternative list with additional directives can be obtained from\r\n        #  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy\r\n        ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS\r\n        ssl-default-bind-options no-sslv3\r\n        \r\ndefaults\r\n        log     global\r\n        mode    http\r\n        option forwardfor\r\n        option http-server-close\r\n        option  httplog\r\n        option  dontlognull\r\n        timeout connect 20s\r\n        timeout client  10m\r\n        timeout server  10m\r\n        errorfile 400 /etc/haproxy/errors/400.http\r\n        errorfile 403 /etc/haproxy/errors/403.http\r\n        errorfile 408 /etc/haproxy/errors/408.http\r\n        errorfile 500 /etc/haproxy/errors/500.http\r\n        errorfile 502 /etc/haproxy/errors/502.http\r\n        errorfile 503 /etc/haproxy/errors/503.http\r\n        errorfile 504 /etc/haproxy/errors/504.http\r\n\r\nfrontend control\r\n        bind 0.0.0.0:8001 ssl crt /home/app/cert/control_key.crt\r\n        reqadd X-Forwarded-Proto:\\ https\r\n        default_backend web_servers\r\n\r\nbackend web_servers\r\n    server server1 127.0.0.1:8080\r\n"
+        "content": "global\r\n       log syslog.engines.internal:514 local0\r\n      #  stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners\r\n        stats timeout 30s\r\n\r\n        # Default SSL material locations\r\n        ca-base /etc/ssl/certs\r\n        crt-base /etc/ssl/private\r\n\r\n        # Default ciphers to use on SSL-enabled listening sockets.\r\n        # For more information, see ciphers(1SSL). This list is from:\r\n        #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/\r\n        # An alternative list with additional directives can be obtained from\r\n        #  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy\r\n        ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS\r\n        ssl-default-bind-options no-sslv3\r\n        \r\ndefaults\r\n        log     global\r\n        mode    http\r\n        option forwardfor\r\n        option http-server-close\r\n        option  httplog\r\n        option  dontlognull\r\n        timeout connect 20s\r\n        timeout client  10m\r\n        timeout server  10m\r\n        errorfile 400 /etc/haproxy/errors/400.http\r\n        errorfile 403 /etc/haproxy/errors/403.http\r\n        errorfile 408 /etc/haproxy/errors/408.http\r\n        errorfile 500 /etc/haproxy/errors/500.http\r\n        errorfile 502 /etc/haproxy/errors/502.http\r\n        errorfile 503 /etc/haproxy/errors/503.http\r\n        errorfile 504 /etc/haproxy/errors/504.http\r\n\r\nfrontend control\r\n        bind 0.0.0.0:8001 \r\n        reqadd X-Forwarded-Proto:\\ https\r\n        default_backend web_servers\r\n\r\nbackend web_servers\r\n    server server1 127.0.0.1:8080\r\n"
       },
       {
-        "path": "/home/app",
+        "path": "/home/app/rainbows.rb",
         "language": "text",
         "content": "\r\napp_path = File.expand_path(File.dirname(__FILE__))\r\ntimeout 600\r\nworking_directory app_path\r\nstderr_path 'log/rainbows_err.log'\r\nstdout_path 'log/rainbows.log'\r\npreload_app true\r\nRainbows! do\r\n  use :ThreadSpawn # concurrency model to use\r\n  worker_connections 40\r\n  keepalive_timeout 330 # zero disables keepalives entirely\r\n  # FixME this should be limited to certain routes\r\n  client_max_body_size 10 * 1024*1024*1024 # 10 GB\r\n  keepalive_requests 100 # default:100\r\n  client_header_buffer_size 4 * 1024 # 2 kilobytes\r\nend"
       }
