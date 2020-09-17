@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-17T11:28:58+10:00"
+    "timestamp": "2020-09-17T18:33:49+10:00"
   },
   "software": {
     "base": {
@@ -118,6 +118,14 @@
         "name": "ENABLE_SERVICES_DESIGNER",
         "input": {
           "type": "checkbox"
+        }
+      },
+      {
+        "name": "PUBLIC_KEY_FILEPATH",
+        "value": "/home/home_dir/id_rsa",
+        "mandatory": true,
+        "input": {
+          "type": "string"
         }
       }
     ],
