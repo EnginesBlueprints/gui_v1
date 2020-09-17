@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-17T18:33:49+10:00"
+    "timestamp": "2020-09-18T07:30:14+10:00"
   },
   "software": {
     "base": {
@@ -53,6 +53,22 @@
         "destination": "/home/app",
         "extraction_command": "git",
         "path_to_extracted": "gui_v1"
+      }
+    ],
+    "service_configurations": [
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "filesystem/local/filesystem",
+        "variables": {
+          "service_name": "_Engines_Builder(engine_name)",
+          "volume_src": "",
+          "engine_path": "/home/app/data",
+          "permissions": "rw",
+          "user": "_Engines_Builder(cont_user_id)",
+          "group": "_Engines_Builder(data_gid)",
+          "fw_user": "_Engines_Builder(cont_user_id)",
+          "exclude_from_backup": "false"
+        }
       }
     ],
     "environment_variables": [
@@ -122,7 +138,7 @@
       },
       {
         "name": "PUBLIC_KEY_FILEPATH",
-        "value": "/home/home_dir/id_rsa",
+        "value": "/home/home_dir/.ssh/identity.pub",
         "mandatory": true,
         "input": {
           "type": "string"
