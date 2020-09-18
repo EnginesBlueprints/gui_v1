@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-18T11:23:28+10:00"
+    "timestamp": "2020-09-18T18:31:01+10:00"
   },
   "software": {
     "base": {
@@ -138,7 +138,7 @@
       },
       {
         "name": "PUBLIC_KEY_FILEPATH",
-        "value": "/home/home_dir/.ssh/identity.pub",
+        "value": "/home/home_dir/.ssh/identity",
         "mandatory": true,
         "input": {
           "type": "string"
